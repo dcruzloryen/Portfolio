@@ -1,6 +1,6 @@
 # Loryen Art — Portfolio
 
-A responsive, static portfolio built from the six documents in `D:\files\PROJECTS`. No build process, database, or package installation is needed.
+A responsive, static portfolio. No build process, database, or package installation is needed.
 
 ## Preview
 
