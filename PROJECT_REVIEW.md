@@ -1,17 +1,17 @@
-# Coursework and project references
+# My project notes
 
-## Featured work
+## Projects in my portfolio
 
-- **ResQConnect** — Group-5 Android project. Loryen developed the application backend and integrated the osmdroid maps. The SOS, weather, and rescuer dispatch screenshots come from `assets/resqconnect visual.pdf`.
-- **Relational Library Tracker** — Java desktop application for inventory, borrowing, and returns. Loryen was the lead developer on the four-person team. The inventory dashboard appears on page 43 of the Library Tracker report (April 2026).
-- **Personal Portfolio** — Static website built with HTML, CSS, and JavaScript. The case studies and filters are in `script.js`.
-- **Casal Campus Network** — Academic campus network design in Cisco Packet Tracer. The topology diagram appears on page 7 of `Casal_Campus_Network_Paper.docx.pdf`.
+- **ResQConnect** — My part in our Group 5 Android project was the backend and map integration. I used osmdroid to show requests and rescuer locations on the map. The three screens in my portfolio (SOS, weather, and dispatch) are from `assets/resqconnect visual.pdf`.
+- **Relational Library Tracker** — I was the lead developer on our four-person team. Our Java desktop app tracks which books are on the shelves, which are on loan, and which have been returned. For my portfolio, I used the inventory screenshot from page 43 of our April 2026 report.
+- **Personal Portfolio** — My site runs on HTML, CSS, and JavaScript. When I update a project, the card text is in `index.html`; the full case study and filter logic are in `script.js`.
+- **Casal Campus Network** — I chose the Cisco Packet Tracer diagram from page 7 of `Casal_Campus_Network_Paper.docx.pdf` for my portfolio because it shows how the departments connect.
 
-## Other coursework
+## My other coursework
 
-| Project | Topic | Source |
+| My project | What I worked on or studied | My reference |
 | --- | --- | --- |
-| TIPid Market | Android campus marketplace; Loryen’s assignments included XML layouts and project scope | `FINAL-PROJECT-MOBILE-COMPUTING.docx` |
-| TIPid Food Ordering | Java Swing ordering workflow, object-oriented programming, and file storage | `CompProg2_Project.docx` |
-| Inside the Computer | Number representation, logic gates, ASCII, and an assembly parity example | `CAO SPECIAL PROJECT DOCUMENTATION - DELA CRUZ, LORYEN ART.pdf` |
-| Gym Membership Transaction System | C++ membership plans, payments, receipts, and daily reports; Loryen contributed the project background and objectives | `FINAL_PROJECT.pdf` |
+| TIPid Market | Our Android campus marketplace. I worked on the XML layouts and helped define the project scope. | `FINAL-PROJECT-MOBILE-COMPUTING.docx` |
+| TIPid Food Ordering | Our team project used Java Swing for the ordering workflow, object-oriented programming for menu items, and files to store records. | `CompProg2_Project.docx` |
+| Inside the Computer | I studied number representation, logic gates, and ASCII. In my assembly example, I checked parity using the lowest bit of an input character. | `CAO SPECIAL PROJECT DOCUMENTATION - DELA CRUZ, LORYEN ART.pdf` |
+| Gym Membership Transaction System | Our C++ project covered membership plans, payments, receipts, and daily reports. I worked on the project background and objectives. | `FINAL_PROJECT.pdf` |

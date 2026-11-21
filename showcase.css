@@ -16,7 +16,7 @@
 .showcase h1 em { color:var(--sage) }
 .lede { max-width:490px; color:var(--mint); line-height:1.65 }
 .showcase-action { background:var(--sage); color:var(--navy); font-weight:700 }
-.showcase-action:hover { background:var(--mint) }
+.showcase-action:hover { background:var(--slate); color:var(--accent) }
 .hero-contact { font-size:13px; border-bottom:1px solid var(--sage) }
 .frame-bar { margin-top:clamp(54px,7vw,96px); padding:17px 0; border-top:1px solid #ffffff55; display:flex; justify-content:space-between; align-items:center }
 .frame-bar small { font-size:9px; margin-bottom:3px }

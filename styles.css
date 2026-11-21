@@ -1,9 +1,10 @@
-/* Near-black canvas, slate surfaces, sage and mint accents. */
+/* Near-black canvas, slate surfaces, and a warm ivory accent. */
 :root {
   --navy: #202734;
   --slate: #36415a;
-  --sage: #b7d894;
-  --mint: #e0f8c7;
+  --accent: #efe8dd;
+  --sage: var(--accent);
+  --mint: var(--accent);
   color-scheme: dark;
   --paper: var(--navy);
   --ink: #edf0f5;
@@ -105,6 +106,7 @@ em { font-family: Georgia, serif; font-weight: 400; color: var(--green); }
 .project-visual:hover { transform: translateY(-5px); box-shadow: 0 16px 35px #234e3b12; }
 .library-visual { background: #dce4cf; padding: 24px 28px; color: #4c5c3d; }
 .visual-top, .visual-bottom { display: flex; justify-content: space-between; gap: 12px; font-size: 9px; letter-spacing: .08em; }
+.resq-visual .visual-top, .web-visual .visual-top { position: absolute; top: 16px; left: 5%; right: 5%; }
 .library-visual img { width: 100%; height: 220px; object-fit: contain; margin: 12px auto; border-radius: 3px; }
 .visual-bottom { position: absolute; bottom: 22px; left: 28px; right: 28px; letter-spacing: 0; }
 .visual-bottom span:last-child { font-size: 18px; }
@@ -186,7 +188,7 @@ em { font-family: Georgia, serif; font-weight: 400; color: var(--green); }
 .project-actions { margin-top: 23px; }
 .detail-link { border: 0; border-bottom: 1px solid #a8b79b; background: transparent; padding: 5px 0; min-height: 44px; }
 .resq-visual { background: #dfe8d4; padding: 24px 28px; color: var(--green); height: 370px; }
-.dispatch-screen { position: absolute; height: 78%; width: auto; max-width: 42%; object-fit: contain; top: 16%; right: 6%; border-radius: 8px; box-shadow: 0 8px 24px #12241938; }
+.dispatch-screen { position: absolute; height: calc(100% - 82px); width: auto; max-width: 42%; object-fit: contain; top: 64px; right: 6%; border-radius: 8px; box-shadow: 0 8px 24px #12241938; }
 .resq-visual .resq-caption { left: 5%; right: 49%; bottom: 18%; }
 .resq-visual .resq-caption strong { font-size: clamp(18px, 3vw, 38px); }
 .screen-gallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(155px,100%),1fr)); gap: 16px; margin-block: 16px; }
@@ -218,6 +220,14 @@ em { font-family: Georgia, serif; font-weight: 400; color: var(--green); }
 .browser-tiles > span:nth-child(3) { background: #eee1cc; }
 .web-caption { position: absolute; bottom: 15px; left: 25px; font-size: 10px; color: var(--muted); }
 .contact-social { display: inline-block; margin: 0 24px 16px 0; border-bottom: 1px solid #a8b79b; padding-bottom: 4px; }
+
+.rates { border-top: 1px solid var(--line); }
+.rate-list { margin: 0; }
+.rate-list > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 16px; padding-block: 18px; border-top: 1px solid var(--line); }
+.rate-list dt { font-weight: 600; }
+.rate-list small { display: block; color: var(--muted); font-size: .9375rem; font-weight: 400; }
+.rate-list dd { margin: 0; color: var(--sage); font-weight: 700; font-variant-numeric: tabular-nums; }
+.rate-terms { max-width: 70ch; margin: 12px 0 18px; color: var(--muted); }
 
 /* Native dialogs retain keyboard support and focus restoration. */
 dialog { --inset: clamp(16px, 4vw, 34px); width: min(720px, calc(100% - 32px)); max-height: 85dvh; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); box-shadow: 0 20px 100px #12241940; }
@@ -315,7 +325,6 @@ dialog h3, .skills-grid h3 { font-size: 1.125rem; }
   .section { padding-block: 65px; }
   .section-heading { flex-direction: column; align-items: start; gap: 20px; }
   .section-heading h2 { font-size: 39px; }
-  .section-heading > p br { display: none; }
   .project, .project:nth-child(even) { grid-template-columns: 1fr; gap: 28px; padding-block: 38px; }
   .project:nth-child(even) .project-visual { order: 0; }
   .project-info { order: 1; }
