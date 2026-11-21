@@ -139,7 +139,8 @@ document.querySelectorAll("[data-project]").forEach(button => {
       element("p", project.limitations)
     );
     if (project.repository) {
-      const link = element("a", "Team repository ↗", "text-link");
+      const link = element("a", "Team repository ", "text-link");
+      link.append(document.querySelector(".brand .glyph").cloneNode(true));
       link.href = project.repository;
       content.append(element("h3", "Source code"), link);
       if (project.repositoryNote) content.append(element("p", project.repositoryNote));
