@@ -15,9 +15,10 @@ Then visit http://localhost:5500.
 ## Files
 
 - `index.html`: biography, sections, project cards, and metadata.
-- `styles.css`: responsive design; optional Google Fonts with local font fallbacks.
-- `script.js`: project notes, category filters, and accessible native dialogs.
-- `assets/`: two original project illustrations extracted from the provided PDFs, plus the site icon.
+- `styles.css`: palette, typography, section layouts, and project dialogs.
+- `showcase.css`: photo slideshow, controls, and reduced-motion styling.
+- `script.js`: project notes, category filters, dialogs, and slideshow playback.
+- `assets/`: hero photos in two sizes, project screenshots, topology diagram, favicon, and the source PDF for the ResQConnect screenshots.
 - `PROJECT_REVIEW.md`: review findings and content decisions.
 
 ## Before publishing
@@ -28,14 +29,10 @@ Then visit http://localhost:5500.
 4. Obtain any necessary permission to publish group-project screenshots.
 5. Add repository or live-demo URLs only when real links are available.
 
-Deploy the folder to any static host, such as GitHub Pages, Netlify, or Cloudflare Pages. Nothing has been published automatically.
-
-Original reports are not copied into the public folder: some include other people's names, CV information, and sample records.
+To deploy, publish `index.html`, both CSS files, `script.js`, and the JPEG, PNG, and SVG files in `assets/`, keeping their relative paths. The source PDF and project review notes are not required by the website.
 
 ## Current portfolio selection
 
 The four selected projects are ResQConnect, Relational Library Tracker, this personal website, and Casal Campus Network. Other coursework remains documented in `PROJECT_REVIEW.md`.
 
-ResQConnect is featured. The owner confirms full backend development and map integrations, excluding database preparation. Kotlin, Supabase, and osmdroid usage were checked in the supplied ZIP without publishing the archive, configuration, credentials, or user data. Its visual is an original workflow illustration, not an application screenshot. The team repository currently returns 404 to public visitors; confirm access before sharing it with recruiters.
-
-The website case study acknowledges AI-assisted implementation. No résumé link is shown because no résumé has been provided.
+ResQConnect is featured. The case study shows three application screenshots: flood SOS, local weather, and rescuer dispatch. The owner's contribution covers the application backend and map integrations, excluding database preparation.

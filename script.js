@@ -1,5 +1,10 @@
 const projects = {
   resq: {
+    screens: [
+      ["assets/resq-sos.jpg", "Request flood assistance", "Home screen showing GPS connection status and the orange flood SOS button."],
+      ["assets/resq-weather.jpg", "Check local weather", "Local conditions, rain chance, and an hourly forecast for the device location."],
+      ["assets/resq-dispatch.jpg", "Track active requests", "Rescuer dispatch map with three active flood requests listed below it."]
+    ],
     title: "ResQConnect",
     category: "ANDROID APPLICATION / TEAM PROJECT",
     tags: ["Kotlin", "Supabase", "osmdroid", "Backend & maps"],
@@ -46,7 +51,6 @@ const projects = {
       "Native project dialogs with keyboard support and focus restoration.",
       "Original CSS illustrations, reduced-motion support, and direct contact links."
     ],
-    role: "My personal portfolio, developed iteratively with AI-assisted implementation and content refinement. It presents my software projects and growing interest in website development.",
     takeaway: "The priority is a clear visitor journey: understand my focus, explore the work, and get in touch—without a heavy framework or unnecessary dependencies.",
     limitations: "A static website with direct email and telephone links rather than a form or backend. No visitor information is collected by a custom form.",
     source: "This site's HTML, CSS, and JavaScript."
@@ -71,6 +75,7 @@ const projects = {
 
 const filters = document.querySelectorAll(".filter");
 const cards = document.querySelectorAll(".project");
+cards.forEach((card, index) => card.style.setProperty("--project-number", `"${String(index + 1).padStart(2, "0")}"`));
 filters.forEach(button => {
   button.addEventListener("click", () => {
     filters.forEach(filter => {
@@ -81,10 +86,7 @@ filters.forEach(button => {
     let visible = 0;
     cards.forEach(card => {
       card.hidden = button.dataset.filter !== "all" && card.dataset.category !== button.dataset.filter;
-      if (!card.hidden) {
-        visible++;
-        card.style.setProperty("--project-number", `"0${visible}"`);
-      }
+      if (!card.hidden) visible++;
     });
     document.querySelector("#filter-status").textContent =
       `Showing ${visible} ${visible === 1 ? "project" : "projects"}`;
@@ -112,7 +114,20 @@ document.querySelectorAll("[data-project]").forEach(button => {
     content.append(title);
     const tags = element("div", "", "tags");
     project.tags.forEach(tag => tags.append(element("span", tag)));
-    content.append(tags, element("p", project.summary), element("h3", "What the project covers"));
+    content.append(tags, element("p", project.summary));
+    if (project.screens) {
+      const gallery = element("div", "", "screen-gallery");
+      for (const [src, caption, alt] of project.screens) {
+        const figure = element("figure");
+        const image = element("img");
+        image.src = src;
+        image.alt = alt;
+        figure.append(image, element("figcaption", caption));
+        gallery.append(figure);
+      }
+      content.append(element("h3", "Inside the application"), gallery);
+    }
+    content.append(element("h3", "What the project covers"));
     const list = element("ul");
     project.features.forEach(feature => list.append(element("li", feature)));
     content.append(list);
@@ -137,7 +152,7 @@ document.querySelectorAll("[data-project]").forEach(button => {
       content.append(image);
     }
     dialog.showModal();
-    dialog.scrollTop = 0;
+    content.scrollTop = 0;
     document.body.classList.add("dialog-open");
   });
 });
@@ -162,6 +177,7 @@ const motion = matchMedia("(prefers-reduced-motion: reduce)");
 const play = document.querySelector("#frame-play");
 let frame = 0;
 let playing = !motion.matches;
+let inView = true;
 let timer;
 function advance(direction) {
   frames[frame].classList.remove("current");
@@ -171,8 +187,9 @@ function advance(direction) {
 }
 function syncPlayback() {
   clearInterval(timer);
-  if (playing && !document.hidden) timer = setInterval(() => advance(1), 8000);
-  showcase.classList.toggle("paused", !playing);
+  const running = playing && inView && !document.hidden;
+  if (running) timer = setInterval(() => advance(1), 8000);
+  showcase.classList.toggle("paused", !running);
   play.textContent = playing ? "Ⅱ" : "▷";
   play.setAttribute("aria-label", playing ? "Pause slideshow" : "Play slideshow");
 }
@@ -185,5 +202,9 @@ for (const [id, direction] of [["frame-prev", -1], ["frame-next", 1]]) {
 play.addEventListener("click", () => { playing = !playing; syncPlayback(); });
 motion.addEventListener("change", () => { playing = !motion.matches; syncPlayback(); });
 document.addEventListener("visibilitychange", syncPlayback);
+new IntersectionObserver(([entry]) => {
+  inView = entry.isIntersecting;
+  syncPlayback();
+}).observe(showcase);
 document.querySelector(".frame-controls").hidden = false;
 syncPlayback();

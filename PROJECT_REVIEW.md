@@ -6,8 +6,7 @@ The current site prioritizes four projects: ResQConnect, Relational Library Trac
 
 - **ResQConnect:** owner confirms responsibility for the full application backend and map integrations, not database preparation. Technology context was checked in `ResQConnect-main.zip`: Kotlin Android source, Supabase dependencies and data access, osmdroid maps/markers, and external navigation. No build or security audit was performed. The supplied report describes a broader prototype workflow; avoid treating every report claim as independently code-verified.
 - **Source access:** the provided team repository returned 404 to public visitors. Keep that limitation visible with its link; the owner's public GitHub profile is `https://github.com/dcruzloryen`.
-- **Presentation:** ResQConnect has a labeled original workflow illustration. No screenshot or operational rescue performance was invented. Its source ZIP and private configuration were not copied into the website.
-- **Website project:** accurately identified as AI-assisted implementation rather than evidence of sole unaided authorship.
+- **Presentation:** ResQConnect uses application screenshots extracted from `assets/resqconnect visual.pdf`. Its source ZIP and private configuration were not copied into the website.
 - **Education:** removed the unconfirmed graduation estimate. A résumé and exact availability still require owner input.
 
 Reviewed six files, representing six distinct projects; five are selected for the portfolio. This is a documentation review, not a source-code audit or independent verification of deployed systems.
