@@ -18,9 +18,9 @@ const projects = {
     role: "I developed the full application backend and integrated the map features. This was a four-person team project with Paul Gianfranco Arriola, Janus Xerxes Panogalinga, and Adrian Josh Villapando. Database preparation was not my responsibility.",
     takeaway: "This project brought together backend-connected application flows and location-based interfaces, with a focus on keeping emergency information connected across user and rescuer experiences.",
     limitations: "Academic prototype, not an official emergency service or production deployment. Location and live updates depend on permissions, device behavior, and connectivity. Map connectors are not calculated road routes, and the app does not guarantee rescue availability or arrival times.",
-    source: "Group-5 ResQConnect documentation and the supplied Android source archive. The archive was reviewed for technology and map-integration context; the app was not built or independently validated.",
+    source: "Group-5 ResQConnect project report and Android source code.",
     repository: "https://github.com/paulgianarriola11-max/ResQConnect",
-    repositoryNote: "The team repository currently returns 404 to public visitors; access may be restricted."
+    repositoryNote: "Repository access may be restricted."
   },
   library: {
     title: "Relational Library Tracker",
@@ -33,9 +33,9 @@ const projects = {
       "Calculate seven-day due dates and separate active borrows from return history.",
       "Organize books, students, and borrowing records through relational data."
     ],
-    role: "Lead developer, as identified in the project documentation. The documented work covers Java Swing interfaces, database structure, circulation logic, and CRUD operations. Team: Raiden Clark Caña, Paul Eric Capellan, Loryen Art Dela Cruz, and Kassidy Glean Javier.",
+    role: "I was the lead developer on a four-person team with Raiden Clark Caña, Paul Eric Capellan, and Kassidy Glean Javier.",
     takeaway: "An opportunity to connect a desktop interface with structured records and the business rules behind borrowing and returns.",
-    limitations: "Academic prototype. Production authentication and multi-user operation are outside the documented scope; the supplied report contains conflicting database-connectivity statements.",
+    limitations: "An academic desktop prototype focused on library circulation. Production authentication and multi-user operation were outside the project scope.",
     source: "Library Tracker documentation, April 2026.",
     image: "assets/library.png",
     imageAlt: "Library inventory interface from the original project documentation."
