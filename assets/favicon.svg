@@ -1,1 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#202734"/><text x="12" y="44" fill="#EFE8DD" font-size="39" font-family="Georgia" font-style="italic">la</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#202734"/><g fill="none" stroke="#efe8dd" stroke-width="3"><circle cx="32" cy="32" r="18"/><ellipse cx="32" cy="32" rx="26" ry="8" transform="rotate(-32 32 32)"/></g></svg>

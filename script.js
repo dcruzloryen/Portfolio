@@ -15,7 +15,7 @@ const projects = {
       "Support emergency reporting, response-status information, and stored request history.",
       "Integrate device location and access to external navigation."
     ],
-    role: "I developed the full application backend and integrated the map features. This was a four-person team project with Paul Gianfranco Arriola, Janus Xerxes Panogalinga, and Adrian Josh Villapando. Database preparation was not my responsibility.",
+    role: "I developed the application backend and integrated the map features on a four-person team.",
     takeaway: "This project brought together backend-connected application flows and location-based interfaces, with a focus on keeping emergency information connected across user and rescuer experiences.",
     limitations: "Academic prototype, not an official emergency service or production deployment. Location and live updates depend on permissions, device behavior, and connectivity. Map connectors are not calculated road routes, and the app does not guarantee rescue availability or arrival times.",
     source: "Group-5 ResQConnect project report and Android source code."
@@ -31,7 +31,7 @@ const projects = {
       "Calculate seven-day due dates and separate active borrows from return history.",
       "Organize books, students, and borrowing records through relational data."
     ],
-    role: "I was the lead developer on a four-person team with Raiden Clark Caña, Paul Eric Capellan, and Kassidy Glean Javier.",
+    role: "I was the lead developer on a four-person team.",
     takeaway: "An opportunity to connect a desktop interface with structured records and the business rules behind borrowing and returns.",
     limitations: "An academic desktop prototype focused on library circulation. Production authentication and multi-user operation were outside the project scope.",
     source: "Library Tracker documentation, April 2026.",
@@ -42,13 +42,16 @@ const projects = {
     title: "Personal Portfolio",
     category: "RESPONSIVE WEBSITE / PERSONAL PROJECT",
     tags: ["HTML", "CSS", "JavaScript", "Responsive design"],
-    summary: "The website you are exploring: a lightweight portfolio designed to make my projects, contributions, and contact information easy to find.",
+    summary: "I built this site for people reviewing my software projects and business owners planning a website. Visitors can go straight to the project archive or the hourly rate sheet.",
     features: [
       "Responsive layouts for mobile and desktop screens.",
       "Category filters with announced result counts.",
       "Native project dialogs with keyboard support and focus restoration.",
-      "Original CSS illustrations, reduced-motion support, and direct contact links."
+      "Scroll-triggered fades with immediate access for keyboard navigation and reduced-motion preferences.",
+      "USD and PHP hourly estimates that carry the chosen service and hours into an email draft."
     ],
+    roleTitle: "Project focus",
+    role: "Website presentation, responsive layouts, and clear project storytelling.",
     takeaway: "The priority is a clear visitor journey: understand my focus, explore the work, and get in touch—without a heavy framework or unnecessary dependencies.",
     limitations: "A static website with direct email and telephone links rather than a form or backend. No visitor information is collected by a custom form.",
     source: "This site's HTML, CSS, and JavaScript."
@@ -63,6 +66,8 @@ const projects = {
       "Plan IP addressing and DHCP for campus devices.",
       "Diagram the connections between routers, switches, and DNS services."
     ],
+    roleTitle: "Project focus",
+    role: "VLAN segmentation, IP addressing, and shared-service planning in Cisco Packet Tracer.",
     takeaway: "The topology shows how a physical connection differs from a logical boundary: departments can share switching infrastructure while belonging to separate VLANs.",
     limitations: "An academic design rather than a deployed network. The addressing tables and routing descriptions would need reconciliation before implementation.",
     source: "Casal Campus Network paper, topology diagram on page 7.",
@@ -71,11 +76,42 @@ const projects = {
   }
 };
 
+const motion = matchMedia("(prefers-reduced-motion: reduce)");
+// Anchor targets stay below the sticky header even when enlarged text wraps.
+const header = document.querySelector(".header");
+function measureHeader() {
+  const height = header.offsetHeight;
+  // In landscape or with enlarged type, let a tall header scroll out of the way.
+  const sticky = height <= window.innerHeight / 4;
+  header.classList.toggle("in-flow", !sticky);
+  document.documentElement.style.setProperty("--header-height", `${sticky ? height : 0}px`);
+}
+measureHeader();
+if ("ResizeObserver" in window) new ResizeObserver(measureHeader).observe(header);
+window.addEventListener("resize", measureHeader);
+const displayAnimations = new Map();
+function animateOnce(node, frames, duration) {
+  displayAnimations.get(node)?.cancel();
+  if (motion.matches || !node.animate) return;
+  const animation = node.animate(frames, { duration, easing: "cubic-bezier(.2,.75,.25,1)" });
+  displayAnimations.set(node, animation);
+  const release = () => { if (displayAnimations.get(node) === animation) displayAnimations.delete(node); };
+  animation.onfinish = animation.oncancel = release;
+}
+function softenChange(node) {
+  animateOnce(node, [
+    { opacity: .65, transform: "translateY(3px)" },
+    { opacity: 1, transform: "translateY(0)" }
+  ], 180);
+}
+motion.addEventListener("change", () => {
+  if (motion.matches) displayAnimations.forEach(animation => animation.cancel());
+});
 const filters = document.querySelectorAll(".filter");
 const cards = document.querySelectorAll(".project");
-cards.forEach((card, index) => card.style.setProperty("--project-number", `"${String(index + 1).padStart(2, "0")}"`));
 filters.forEach(button => {
   button.addEventListener("click", () => {
+    if (button.getAttribute("aria-pressed") === "true") return;
     filters.forEach(filter => {
       const selected = filter === button;
       filter.classList.toggle("active", selected);
@@ -91,6 +127,7 @@ filters.forEach(button => {
   });
 });
 
+document.querySelector(".filters").hidden = false;
 const dialog = document.querySelector("#project-dialog");
 const content = document.querySelector("#dialog-content");
 let opener;
@@ -101,6 +138,9 @@ function element(tag, text, className) {
   return node;
 }
 document.querySelectorAll("[data-project]").forEach(button => {
+  if (typeof dialog.showModal !== "function") return;
+  button.disabled = false;
+  button.hidden = false;
   button.addEventListener("click", () => {
     const project = projects[button.dataset.project];
     if (!project) return;
@@ -129,7 +169,7 @@ document.querySelectorAll("[data-project]").forEach(button => {
     const list = element("ul");
     project.features.forEach(feature => list.append(element("li", feature)));
     content.append(list);
-    if (project.role) content.append(element("h3", "My contribution"), element("p", project.role, "role"));
+    if (project.role) content.append(element("h3", project.roleTitle || "My contribution"), element("p", project.role, "role"));
     content.append(
       element("h3", "Development perspective"),
       element("p", project.takeaway),
@@ -143,7 +183,7 @@ document.querySelectorAll("[data-project]").forEach(button => {
       image.alt = project.imageAlt;
       content.append(image);
     }
-    dialog.showModal();
+    if (!dialog.open) dialog.showModal();
     content.scrollTop = 0;
     document.body.classList.add("dialog-open");
   });
@@ -158,106 +198,9 @@ dialog.addEventListener("click", event => {
 });
 dialog.addEventListener("close", () => {
   document.body.classList.remove("dialog-open");
-  opener?.focus();
+  if (opener?.isConnected) opener.focus();
 });
 document.querySelector("#year").textContent = new Date().getFullYear();
-
-const showcase = document.querySelector(".showcase");
-const frames = [...showcase.querySelectorAll(".frames img")];
-const frameIndex = showcase.querySelector(".frame-index");
-const frameKeys = [...frameIndex.querySelectorAll("[data-frame]")];
-const captions = ["Lines of logic", "Space to think", "Room to collaborate"];
-const motion = matchMedia("(prefers-reduced-motion: reduce)");
-const play = document.querySelector("#frame-play");
-let frame = 0;
-let playing = !motion.matches;
-let inView = true;
-let hovering = false;
-let timer;
-function advance(direction) {
-  frames[frame].classList.remove("current");
-  frame = (frame + direction + frames.length) % frames.length;
-  frames[frame].classList.add("current");
-  showcase.style.setProperty("--frame-turn", `${frame * 30}deg`);
-  frameKeys.forEach((key, index) => key.setAttribute("aria-pressed", String(index === frame)));
-  document.querySelector("#frame-caption").textContent = `${String(frame + 1).padStart(2, "0")} / ${String(frames.length).padStart(2, "0")} · ${captions[frame]}`;
-}
-function syncPlayback() {
-  clearInterval(timer);
-  const running = playing && inView && !hovering && !document.hidden;
-  if (running) timer = setInterval(() => advance(1), 8000);
-  showcase.classList.toggle("paused", !running);
-  play.textContent = playing ? "Ⅱ" : "▷";
-  play.setAttribute("aria-label", playing ? "Pause slideshow" : "Play slideshow");
-}
-for (const [id, direction] of [["frame-prev", -1], ["frame-next", 1]]) {
-  document.getElementById(id).addEventListener("click", () => {
-    advance(direction);
-    syncPlayback();
-  });
-}
-play.addEventListener("click", () => { playing = !playing; syncPlayback(); });
-frameKeys.forEach((key, index) => {
-  key.style.setProperty("--preview", `url("${frames[index].currentSrc || frames[index].src}")`);
-  key.addEventListener("click", () => {
-    advance(index - frame);
-    playing = false;
-    syncPlayback();
-  });
-});
-frameIndex.hidden = false;
-// The focus mark responds to the pointer; text and controls keep their positions.
-const finder = showcase.querySelector(".viewfinder");
-const allowTracking = matchMedia("(min-width: 1100px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
-let trackingFrame = 0;
-function centerFinder() {
-  cancelAnimationFrame(trackingFrame);
-  trackingFrame = 0;
-  finder.style.removeProperty("--look-x");
-  finder.style.removeProperty("--look-y");
-}
-let pointerX, pointerY;
-showcase.addEventListener("pointermove", event => {
-  if (!allowTracking.matches || event.pointerType !== "mouse") return;
-  pointerX = event.clientX;
-  pointerY = event.clientY;
-  if (trackingFrame) return;
-  trackingFrame = requestAnimationFrame(() => {
-    const box = showcase.getBoundingClientRect();
-    finder.style.setProperty("--look-x", `${((pointerX - box.left) / box.width - .5) * 32}px`);
-    finder.style.setProperty("--look-y", `${((pointerY - box.top) / box.height - .5) * 24}px`);
-    trackingFrame = 0;
-  });
-});
-showcase.addEventListener("pointerleave", centerFinder);
-allowTracking.addEventListener("change", centerFinder);
-showcase.addEventListener("focusin", event => {
-  if (!showcase.contains(event.relatedTarget) && event.target.matches(":focus-visible")) {
-    playing = false;
-    syncPlayback();
-  }
-});
-showcase.querySelector(".frame-controls").addEventListener("pointerenter", event => {
-  if (event.pointerType === "mouse") { hovering = true; syncPlayback(); }
-});
-showcase.querySelector(".frame-controls").addEventListener("pointerleave", () => { hovering = false; syncPlayback(); });
-motion.addEventListener("change", () => { playing = !motion.matches; syncPlayback(); });
-document.addEventListener("visibilitychange", syncPlayback);
-new IntersectionObserver(([entry]) => {
-  inView = entry.isIntersecting;
-  syncPlayback();
-}).observe(showcase);
-document.querySelector(".frame-controls").hidden = false;
-syncPlayback();
-
-const chapters = new IntersectionObserver(entries => {
-  for (const {target, isIntersecting} of entries) {
-    if (!isIntersecting) continue;
-    if (!motion.matches) target.classList.add("chapter-arrives");
-    chapters.unobserve(target);
-  }
-}, {threshold:.12});
-document.querySelectorAll(".section-heading, .project-info, .contact-row, .about-copy").forEach(el => chapters.observe(el));
 
 const studioTime = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Manila", hour: "2-digit", minute: "2-digit" });
 let clockTimer;
@@ -278,32 +221,102 @@ const hoursInput = document.querySelector("#estimate-hours");
 const totalOutput = document.querySelector("#estimate-total");
 const inquiry = document.querySelector("#rates a[href^='mailto:']");
 const baseInquiry = inquiry.href;
+const phpPerDollar = 64;
+let currency = "USD";
+function money(usd) {
+  return new Intl.NumberFormat("en-US", {style:"currency", currency, currencyDisplay:"narrowSymbol", maximumFractionDigits:0, minimumFractionDigits:0})
+    .format(currency === "PHP" ? usd * phpPerDollar : usd);
+}
 document.querySelectorAll(".rate-list > div").forEach(row => {
-  const service = row.querySelector("dt").firstChild.textContent.trim();
-  const rate = Number(row.querySelector("dd").textContent.match(/\d+/)[0]);
-  serviceSelect.add(new Option(service, rate));
+  const term = row.querySelector("dt");
+  const service = term.firstChild.textContent.trim();
+  const rate = Number(row.querySelector("data").value);
+  const option = new Option(term.dataset.short || service, rate);
+  option.dataset.service = service;
+  serviceSelect.add(option);
 });
+function showTotal(value) {
+  if (totalOutput.value === value) return;
+  totalOutput.value = value;
+  softenChange(totalOutput);
+}
 function estimate() {
   const hours = hoursInput.valueAsNumber;
   if (hoursInput.value === "" && !hoursInput.validity.badInput) {
-    totalOutput.value = "—";
+    showTotal("—");
     hoursInput.removeAttribute("aria-invalid");
     inquiry.href = baseInquiry;
     return;
   }
   if (!hoursInput.validity.valid || !Number.isFinite(hours)) {
-    totalOutput.value = "Enter 1–999 whole hours";
+    showTotal("Enter 1–999 whole hours");
     hoursInput.setAttribute("aria-invalid", "true");
     inquiry.href = baseInquiry;
     return;
   }
   hoursInput.removeAttribute("aria-invalid");
   const amount = Number(serviceSelect.value) * hours;
-  totalOutput.value = `$${amount.toLocaleString("en-US")}`;
-  const message = `Hi Loryen,\n\nI’m interested in ${serviceSelect.selectedOptions[0].text}. I’m considering ${hours} hours at $${serviceSelect.value}/hr (${totalOutput.value} estimated labor).\n\nMy project: `;
+  showTotal(money(amount));
+  const message = `Hi Loryen,\n\nI’m interested in ${serviceSelect.selectedOptions[0].dataset.service}. I’m considering ${hours} hours at the starting rate of ${money(Number(serviceSelect.value))}/hr (${totalOutput.value} estimated labor, ${currency}).\n\nMy project: `;
   inquiry.href = `${baseInquiry}&body=${encodeURIComponent(message)}`;
 }
 serviceSelect.addEventListener("change", estimate);
 hoursInput.addEventListener("input", estimate);
+const currencySwitch = document.querySelector(".currency-switch");
+currencySwitch.querySelectorAll("button").forEach(button => button.addEventListener("click", () => {
+  if (button.dataset.currency === currency) return;
+  currency = button.dataset.currency;
+  currencySwitch.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+  document.querySelectorAll(".rate-list data").forEach(rate => {
+    rate.textContent = `${money(Number(rate.value))}/hr`;
+    softenChange(rate);
+  });
+  estimate();
+}));
+currencySwitch.hidden = false;
 estimate();
 document.querySelector(".estimate-panel").hidden = false;
+document.querySelector(".contact-intro .button").href = "#estimate";
+
+// Only prepare below-the-fold content. Restored positions and deep links are
+// readable on arrival, and the browser retains control of wheel/touch scrolling.
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    for (const {target, isIntersecting} of entries) {
+      if (!isIntersecting) continue;
+      observer.unobserve(target);
+      delete target.dataset.entry;
+      if (!target.matches(":focus-within, :target")) animateOnce(target, [
+        { opacity: 0, translate: "0 18px" }, { opacity: 1, translate: "0 0" }
+      ], 600);
+    }
+  });
+  const blocks = document.querySelectorAll(".section-heading, .filters, .project, .about-layout > div, .skills-grid > div, .currency-switch, .rate-list > div, .rate-terms, .estimate-panel, #rates > .button, .contact-intro, .contact-card");
+  const upcoming = Array.from(blocks).filter(node => node.getBoundingClientRect().top >= innerHeight);
+  upcoming.forEach(node => {
+    node.dataset.entry = "pending";
+    observer.observe(node);
+  });
+}
+
+// Update only the hovered card, at most once per painted frame.
+const trackLight = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+document.querySelectorAll(".project, .skills-grid > div").forEach(card => {
+  let frame = 0, x, y;
+  card.addEventListener("pointermove", event => {
+    if (!trackLight.matches || event.pointerType === "touch") return;
+    x = event.clientX;
+    y = event.clientY;
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const bounds = card.getBoundingClientRect();
+      card.style.setProperty("--light-x", `${x - bounds.left}px`);
+      card.style.setProperty("--light-y", `${y - bounds.top}px`);
+    });
+  });
+  card.addEventListener("pointerleave", () => {
+    cancelAnimationFrame(frame);
+    frame = 0;
+  });
+});
