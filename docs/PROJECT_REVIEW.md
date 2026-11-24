@@ -2,7 +2,7 @@
 
 ## Projects in my portfolio
 
-- **ResQConnect** — My part in our Group 5 Android project was the backend and map integration. I used osmdroid to show requests and rescuer locations on the map. The three screens in my portfolio (SOS, weather, and dispatch) are from `assets/resqconnect visual.pdf`.
+- **ResQConnect** — My part in our Group 5 Android project was the backend and map integration. I used osmdroid to show requests and rescuer locations on the map. The three screens in my portfolio (SOS, weather, and dispatch) are from the [original project PDF](resqconnect%20visual.pdf).
 - **Relational Library Tracker** — I was the lead developer on our four-person team. Our Java desktop app tracks which books are on the shelves, which are on loan, and which have been returned. For my portfolio, I used the inventory screenshot from page 43 of our April 2026 report.
 - **Personal Portfolio** — My site runs on HTML, CSS, and JavaScript. When I update a project, the card text is in `index.html`; the full case study and filter logic are in `script.js`.
 - **Casal Campus Network** — I chose the Cisco Packet Tracer diagram from page 7 of `Casal_Campus_Network_Paper.docx.pdf` for my portfolio because it shows how the departments connect.

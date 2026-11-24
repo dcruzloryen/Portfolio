@@ -18,15 +18,15 @@ With the Python server running, I open http://localhost:5500.
 - `styles.css` — I use this file for my color palette, type sizes, section layouts, and project dialogs.
 - `showcase.css` — I adjust my hero typography, spacing, and soft background here.
 - `script.js` — I keep my case studies, filters, dialogs, scroll fades, currency switch, and estimate email behavior here.
-- `assets/` — I keep my original project screenshots, network diagram, favicon, and the PDF I used for the ResQConnect images here.
-- `PROJECT_REVIEW.md` — I keep notes on my coursework and the reports I reference.
+- `assets/` — The screenshots, network diagram, and favicon displayed on the site.
+- `docs/` — My coursework notes and the source PDF for the ResQConnect screenshots.
 
 ## How I publish my site
 
-I publish `index.html`, both stylesheets, `script.js`, and the JPEG, PNG, and SVG files in `assets/`. I keep the folder structure the same so the links work after deployment. I can leave out the source PDF and my review notes because my site doesn’t load them.
+I publish `index.html`, both stylesheets, `script.js`, and the `assets/` folder. The `docs/` folder is for reference only.
 
 ## Projects I feature
 
-I feature ResQConnect, Relational Library Tracker, this portfolio, and Casal Campus Network. I keep my other coursework in [my project notes](PROJECT_REVIEW.md).
+I feature ResQConnect, Relational Library Tracker, this portfolio, and Casal Campus Network. I keep my other coursework in [my project notes](docs/PROJECT_REVIEW.md).
 
 In my ResQConnect case study, I use three app screenshots to show how someone requests flood assistance, checks local weather, and views active requests on the rescuer dashboard.
