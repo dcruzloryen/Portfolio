@@ -10,14 +10,15 @@
   --line: #5d677d;
   --outline: #7c8699;
   --mono: ui-monospace, Consolas, monospace;
-  --heading: Manrope, Arial, sans-serif;
+  --sans: system-ui, sans-serif;
+  --heading: var(--sans);
   --radius: 14px;
   --space: clamp(60px, 7vw, 104px);
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height, 70px) + 12px); -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.65 "DM Sans", Arial, sans-serif; overflow-wrap: anywhere; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.65 var(--sans); overflow-wrap: anywhere; }
 h1, h2, h3, p, dl, dd { margin: 0; }
 h1, h2, h3 { font-family: var(--heading); }
 h2 { font-size: clamp(2.1rem, 4.1vw, 3.65rem); letter-spacing: -.055em; line-height: 1.09; }
