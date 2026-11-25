@@ -7,9 +7,9 @@
   <meta name="theme-color" content="#15191f">
   <title>Loryen Art Dela Cruz — Portfolio</title>
   <link rel="icon" href="assets/favicon.svg?v=ivory-1" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=stable-type-1">
-  <link rel="stylesheet" href="showcase.css?v=full-hero-1">
-  <script src="script.js?v=reflow-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=layout-3">
+  <link rel="stylesheet" href="showcase.css?v=responsive-2">
+  <script src="script.js?v=dialog-3" defer></script>
 </head>
 <body>
   <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -58,7 +58,18 @@
             <div class="app-pair"><img class="sos-screen" src="assets/resq-sos.jpg" alt="Community SOS request screen" width="369" height="820" loading="lazy"><img class="dispatch-screen" src="assets/resq-dispatch.jpg" alt="Rescuer dashboard showing a map and three active flood requests" width="461" height="1024" loading="lazy"></div>
             <div class="visual-bottom">Inside the rescuer dashboard</div>
           </div>
-          <div class="project-info"><h3>ResQConnect</h3><p>A flood-response Android prototype that connects community SOS requests with rescuers tracking them on a map.</p><p class="contribution"><strong>My role</strong> I built the full backend and integrated the maps on a four-person team.</p><div class="tags"><span>Kotlin</span><span>Supabase</span><span>osmdroid</span></div><button type="button" class="button secondary" data-project="resq" aria-label="Read ResQConnect case study" hidden>Read case study <svg class="glyph" aria-hidden="true"><use href="#icon-ne"/></svg></button></div>
+          <div class="project-info"><h3>ResQConnect</h3><p>A flood-response Android prototype that connects community SOS requests with rescuers tracking them on a map.</p><p class="contribution"><strong>My role</strong> I built the full backend and integrated the maps on a four-person team.</p><div class="tags"><span>Kotlin</span><span>Supabase</span><span>osmdroid</span></div>
+            <details class="study" data-study="resq"><summary aria-label="Read case study: ResQConnect">Read case study</summary>
+              <div class="study-body"><p class="eyebrow">ANDROID APPLICATION / TEAM PROJECT</p><h2>ResQConnect</h2>
+                <div class="tags"><span>Kotlin</span><span>Supabase</span><span>osmdroid</span><span>Backend &amp; maps</span></div><p>An academic Android prototype for coordinating flood-related requests for assistance. Community users submit SOS requests, while rescuers use role-specific workflows to respond and monitor progress.</p>
+                <h3>Inside the application</h3><div class="screen-gallery"><figure><a href="assets/resq-sos.jpg"><img loading="lazy" src="assets/resq-sos.jpg" alt="Home screen showing GPS connection status and the orange flood SOS button."></a><figcaption>Request flood assistance</figcaption></figure><figure><a href="assets/resq-weather.jpg"><img loading="lazy" src="assets/resq-weather.jpg" alt="Local conditions, rain chance, and an hourly forecast for the device location."></a><figcaption>Check local weather</figcaption></figure><figure><a href="assets/resq-dispatch.jpg"><img loading="lazy" src="assets/resq-dispatch.jpg" alt="Rescuer dispatch map with three active flood requests listed below it."></a><figcaption>Track active requests</figcaption></figure></div>
+                <h3>What the project covers</h3><ul><li>Connect Android workflows to Supabase authentication, persistent records, and real-time updates.</li><li>Display emergency and rescuer locations using osmdroid map views and markers.</li><li>Support emergency reporting, response-status information, and stored request history.</li><li>Integrate device location and access to external navigation.</li></ul>
+                <h3>My contribution</h3><p class="role">I developed the application backend and integrated the map features on a four-person team.</p>
+                <h3>Development perspective</h3><p>This project brought together backend-connected application flows and location-based interfaces, with a focus on keeping emergency information connected across user and rescuer experiences.</p>
+                <h3>Project scope</h3><p>Academic prototype, not an official emergency service or production deployment. Location and live updates depend on permissions, device behavior, and connectivity. Map connectors are not calculated road routes, and the app does not guarantee rescue availability or arrival times.</p>
+                <h3>Project reference</h3><p>Group-5 ResQConnect project report and Android source code.</p></div>
+            </details>
+          </div>
         </article>
         <article class="project" data-category="software">
           <div class="project-visual library-visual">
@@ -66,7 +77,18 @@
             <img src="assets/library.png" loading="lazy" alt="Original TIP Manila Library Tracker inventory dashboard, with a black and yellow interface" width="1199" height="644">
             <div class="visual-bottom"><span>Better records. Smoother circulation.</span><span><svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-ne"/></svg></span></div>
           </div>
-          <div class="project-info"><h3><button type="button" class="case-opener" data-project="library" aria-label="Read Library Tracker case study" disabled>Relational Library Tracker<svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-ne"/></svg></button></h3><p>A desktop library system connecting inventory, students, and borrowing records in one organized workflow.</p><p class="contribution"><strong>My role</strong> Lead developer on a four-person academic team.</p><div class="tags"><span>Java Swing</span><span>Oracle SQL</span><span>JDBC</span></div></div>
+          <div class="project-info"><h3>Relational Library Tracker</h3><p>A desktop library system connecting inventory, students, and borrowing records in one organized workflow.</p><p class="contribution"><strong>My role</strong> Lead developer on a four-person academic team.</p><div class="tags"><span>Java Swing</span><span>Oracle SQL</span><span>JDBC</span></div>
+            <details class="study" data-study="library"><summary aria-label="Read case study: Relational Library Tracker">Read case study</summary>
+              <div class="study-body"><p class="eyebrow">JAVA DESKTOP APPLICATION / TEAM PROJECT</p><h2>Relational Library Tracker</h2>
+                <div class="tags"><span>Java Swing</span><span>Oracle SQL</span><span>JDBC</span></div><p>A desktop library-management prototype that connects book inventory, student registration, and circulation records in a single workflow.</p>
+                <h3>What the project covers</h3><ul><li>Search and manage books by title, author, genre, and shelf location.</li><li>Connect student profiles with borrowing and return records.</li><li>Calculate seven-day due dates and separate active borrows from return history.</li><li>Organize books, students, and borrowing records through relational data.</li></ul>
+                <h3>My contribution</h3><p class="role">I was the lead developer on a four-person team.</p>
+                <h3>Development perspective</h3><p>An opportunity to connect a desktop interface with structured records and the business rules behind borrowing and returns.</p>
+                <h3>Project scope</h3><p>An academic desktop prototype focused on library circulation. Production authentication and multi-user operation were outside the project scope.</p>
+                <h3>Project reference</h3><p>Library Tracker documentation, April 2026.</p>
+                <a href="assets/library.png"><img loading="lazy" src="assets/library.png" alt="Library inventory interface from the original project documentation."></a></div>
+            </details>
+          </div>
         </article>
         <article class="project" data-category="web">
           <div class="project-visual web-visual">
@@ -74,7 +96,17 @@
             <div class="browser-sketch" aria-hidden="true"><div class="browser-bar"><i></i><i></i><i></i><span>loryen / portfolio</span></div><div class="browser-body"><span class="mini-pill">Web &amp; software developer</span><strong>I build websites.<br><em>And what powers them.</em></strong><span class="browser-button">Explore my projects</span></div></div>
             <div class="visual-bottom web-caption"><span>The website you’re exploring right now.</span><span><svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-ne"/></svg></span></div>
           </div>
-          <div class="project-info"><h3><button type="button" class="case-opener" data-project="website" aria-label="Read Personal Portfolio case study" disabled>Personal Portfolio<svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-ne"/></svg></button></h3><p>A home for my software work and freelance services. Visitors can explore case studies, compare hourly rates, and draft a project inquiry.</p><p class="contribution"><strong>Project focus</strong> Responsive layouts, keyboard navigation, and scroll effects that respect motion preferences.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive design</span></div></div>
+          <div class="project-info"><h3>Personal Portfolio</h3><p>A home for my software work and freelance services. Visitors can explore case studies, compare hourly rates, and draft a project inquiry.</p><p class="contribution"><strong>Project focus</strong> Responsive layouts, keyboard navigation, and scroll effects that respect motion preferences.</p><div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive design</span></div>
+            <details class="study" data-study="website"><summary aria-label="Read case study: Personal Portfolio">Read case study</summary>
+              <div class="study-body"><p class="eyebrow">RESPONSIVE WEBSITE / PERSONAL PROJECT</p><h2>Personal Portfolio</h2>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive design</span></div><p>I built this site for people reviewing my software projects and business owners planning a website. Visitors can go straight to the project archive or the hourly rate sheet.</p>
+                <h3>What the project covers</h3><ul><li>Responsive layouts for mobile and desktop screens.</li><li>Category filters with announced result counts.</li><li>Native project dialogs with keyboard support and focus restoration.</li><li>Scroll-triggered fades with immediate access for keyboard navigation and reduced-motion preferences.</li><li>USD and PHP hourly estimates that carry the chosen service and hours into an email draft.</li></ul>
+                <h3>Project focus</h3><p class="role">Website presentation, responsive layouts, and clear project storytelling.</p>
+                <h3>Development perspective</h3><p>The priority is a clear visitor journey: understand my focus, explore the work, and get in touch—without a heavy framework or unnecessary dependencies.</p>
+                <h3>Project scope</h3><p>A static website with direct email and telephone links rather than a form or backend. No visitor information is collected by a custom form.</p>
+                <h3>Project reference</h3><p>This site's HTML, CSS, and JavaScript.</p></div>
+            </details>
+          </div>
         </article>
         <article class="project" data-category="network">
           <div class="project-visual network-visual">
@@ -82,7 +114,18 @@
             <img src="assets/network.png" loading="lazy" alt="Packet Tracer diagram showing campus routers, switches, and departmental connections" width="856" height="860">
             <div class="visual-bottom"><span>Separate departments. Shared services.</span><span><svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-ne"/></svg></span></div>
           </div>
-          <div class="project-info"><h3><button type="button" class="case-opener" data-project="network" aria-label="Read Casal Campus Network case study" disabled>Casal Campus Network<svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-ne"/></svg></button></h3><p>A campus network design that separates department traffic with VLANs and plans how devices receive addresses and reach shared services.</p><p class="contribution"><strong>Project focus</strong> VLAN segmentation, addressing, and shared-service planning in Cisco Packet Tracer.</p><div class="tags"><span>Cisco Packet Tracer</span><span>VLANs</span><span>DHCP &amp; DNS</span></div></div>
+          <div class="project-info"><h3>Casal Campus Network</h3><p>A campus network design that separates department traffic with VLANs and plans how devices receive addresses and reach shared services.</p><p class="contribution"><strong>Project focus</strong> VLAN segmentation, addressing, and shared-service planning in Cisco Packet Tracer.</p><div class="tags"><span>Cisco Packet Tracer</span><span>VLANs</span><span>DHCP &amp; DNS</span></div>
+            <details class="study" data-study="network"><summary aria-label="Read case study: Casal Campus Network">Read case study</summary>
+              <div class="study-body"><p class="eyebrow">NETWORK DESIGN / ACADEMIC PROJECT</p><h2>Casal Campus Network</h2>
+                <div class="tags"><span>Cisco Packet Tracer</span><span>VLANs</span><span>DHCP</span><span>DNS</span></div><p>A campus topology that maps departmental networks to switches, routers, and shared services.</p>
+                <h3>What the project covers</h3><ul><li>Separate departments into virtual LANs.</li><li>Plan IP addressing and DHCP for campus devices.</li><li>Diagram the connections between routers, switches, and DNS services.</li></ul>
+                <h3>Project focus</h3><p class="role">VLAN segmentation, IP addressing, and shared-service planning in Cisco Packet Tracer.</p>
+                <h3>Development perspective</h3><p>The topology shows how a physical connection differs from a logical boundary: departments can share switching infrastructure while belonging to separate VLANs.</p>
+                <h3>Project scope</h3><p>An academic design rather than a deployed network. The addressing tables and routing descriptions would need reconciliation before implementation.</p>
+                <h3>Project reference</h3><p>Casal Campus Network paper, topology diagram on page 7.</p>
+                <a href="assets/network.png"><img loading="lazy" src="assets/network.png" alt="Original Casal Campus Network topology diagram."></a></div>
+            </details>
+          </div>
         </article>
       </div>
     </section>
@@ -98,7 +141,24 @@
         </div>
       </div>
     </section>
-    <section class="wrap section toolkit" id="toolkit"><div class="section-heading"><div><p class="eyebrow">03 / DEVELOPMENT TOOLKIT</p><h2>The tools behind <em>the work.</em></h2></div><p>Practical technologies from application projects<br>and my ongoing work on the web.</p></div><div class="skills-grid"><div><span class="skill-icon" aria-hidden="true">{ }</span><h3>Software development</h3><p>Java · Kotlin · Java Swing<br>OOP · Android · File I/O</p></div><div><span class="skill-icon" aria-hidden="true"><svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-across"/></svg></span><h3>Backend &amp; integrations</h3><p>Supabase · SQL · JDBC<br>Authentication · Realtime · osmdroid</p></div><div><span class="skill-icon" aria-hidden="true">&lt;/&gt;</span><h3>Website development</h3><p>HTML · CSS · JavaScript<br>Responsive layouts · Web fundamentals</p></div></div></section>
+    <section class="wrap section toolkit" id="toolkit">
+      <div class="section-heading"><div><p class="eyebrow">03 / DEVELOPMENT TOOLKIT</p><h2>The tools behind <em>the work.</em></h2></div><p>Practical technologies from application projects<br>and my ongoing work on the web.</p></div>
+      <div class="tool-reel">
+        <div class="tool-window" id="tool-logos"><div class="tool-track">
+          <ul class="tool-set" aria-label="Technologies used in my projects">
+            <li><img src="assets/tools/java.svg" alt="Java" width="40" height="40"></li>
+            <li><img src="assets/tools/kotlin.svg" alt="Kotlin" width="40" height="40"></li>
+            <li><img src="assets/tools/android.svg" alt="Android" width="40" height="40"></li>
+            <li><img src="assets/tools/supabase.svg" alt="Supabase" width="40" height="40"></li>
+            <li><img src="assets/tools/oracle.svg" alt="Oracle SQL" width="40" height="40"></li>
+            <li><img src="assets/tools/html5.svg" alt="HTML" width="40" height="40"></li>
+            <li><img src="assets/tools/css3.svg" alt="CSS" width="40" height="40"></li>
+            <li><img src="assets/tools/javascript.svg" alt="JavaScript" width="40" height="40"></li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="skills-grid"><div><span class="skill-icon" aria-hidden="true">{ }</span><h3>Software development</h3><p>Java · Kotlin · Java Swing<br>OOP · Android · File I/O</p></div><div><span class="skill-icon" aria-hidden="true"><svg width="1em" height="1em" class="glyph" aria-hidden="true" focusable="false"><use href="#icon-across"/></svg></span><h3>Backend &amp; integrations</h3><p>Supabase · SQL · JDBC<br>Authentication · Realtime · osmdroid</p></div><div><span class="skill-icon" aria-hidden="true">&lt;/&gt;</span><h3>Website development</h3><p>HTML · CSS · JavaScript<br>Responsive layouts · Web fundamentals</p></div></div>
+    </section>
     <section class="wrap section rates" id="rates" aria-labelledby="rates-title">
       <div class="section-heading"><div><p class="eyebrow">04 / FREELANCE SERVICES</p><h2 id="rates-title">Website <em>rates.</em></h2></div><p>Hourly Rates</p></div>
       <div class="currency-switch" role="group" aria-label="Pricing currency" hidden>
@@ -127,7 +187,7 @@
         <p class="eyebrow">05 / DIRECT CONTACT</p>
         <div class="contact-row"><h2>Tell me about your <em>website project.</em></h2></div>
         <p>A brief is enough: what you’re building, who it’s for, and when you need it.</p>
-        <a class="button primary" href="#rates">Estimate a website project <svg class="glyph" aria-hidden="true"><use href="#icon-right"/></svg></a>
+        <a class="button primary" href="#rates"><span>View hourly rates</span> <svg class="glyph" aria-hidden="true"><use href="#icon-right"/></svg></a>
       </div>
       <div class="contact-links">
         <a class="contact-card" href="mailto:dcruzloryen@gmail.com"><span>01 / EMAIL</span><strong>dcruzloryen@gmail.com</strong><span aria-hidden="true"><svg width="1em" height="1em" class="glyph"><use href="#icon-ne"/></svg></span></a>

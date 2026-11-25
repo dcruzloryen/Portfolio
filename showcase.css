@@ -3,16 +3,11 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   place-items: center;
-  min-height: clamp(540px, 77svh, 740px);
+  min-height: calc(100vh - var(--masthead-height, 64px));
+  min-height: calc(100svh - var(--masthead-height, 64px));
   padding-block: clamp(66px, 8vw, 122px);
   text-align: center;
   background: var(--hero-glow);
-}
-@media (min-width: 64rem) {
-  .showcase {
-    min-height: calc(100vh - var(--header-height, 64px));
-    min-height: calc(100svh - var(--header-height, 64px));
-  }
 }
 .folio-label { display: inline-flex; gap: .65em; align-items: center; border: 1px solid var(--line); border-radius: 2rem; background: var(--surface); color: var(--muted); padding: .48em 1em; font-size: clamp(.73rem, 1vw, .84rem); }
 .folio-label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 30%, transparent); }

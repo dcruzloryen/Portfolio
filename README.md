@@ -17,7 +17,8 @@ With the Python server running, I open http://localhost:5500.
 - `index.html` — I edit my bio, project cards, rates, contact links, and page metadata here.
 - `styles.css` — I use this file for my color palette, type sizes, section layouts, and project dialogs.
 - `showcase.css` — I adjust my hero typography, spacing, and soft background here.
-- `script.js` — I keep my case studies, filters, dialogs, scroll fades, currency switch, and estimate email behavior here.
+- `index.html` also contains the full case studies. They expand inline without JavaScript.
+- `script.js` - I keep my filters, enhanced case-study dialogs, scroll fades, currency switch, and estimate email behavior here.
 - `assets/` — The screenshots, network diagram, and favicon displayed on the site.
 - `docs/` — My coursework notes and the source PDF for the ResQConnect screenshots.
 
